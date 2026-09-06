@@ -42,7 +42,10 @@ automatically when a test fails. The profile's existing ID remains stable throug
 [Release Please](../.github/workflows/release-please.yml) owns versions, changelog, tags, and private
 GitHub releases through [its manifest](../.release-please-manifest.json) and
 [configuration](../release-please-config.json). Configure `RELEASE_PLEASE_TOKEN` with access to this
-private repository before enabling release creation. The initial implementation has no published
+private repository before enabling release creation. Until then, CI reports the missing setup in
+its job summary and skips release PR creation; ordinary checks still run. Retrying artifacts for
+an existing release uses the job's GitHub token and does not require the release-creation token.
+The initial implementation has no published
 release until its release PR is reviewed and merged. This package is private; no npm publication
 job is configured.
 

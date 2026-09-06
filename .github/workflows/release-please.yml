@@ -28,9 +28,20 @@ jobs:
       tag_name: ${{ steps.release.outputs.tag_name }}
       version: ${{ steps.release.outputs.version }}
     steps:
+      - name: Check release creation setup
+        id: credentials
+        env:
+          RELEASE_PLEASE_TOKEN: ${{ secrets.RELEASE_PLEASE_TOKEN }}
+        run: |
+          if [ -n "$RELEASE_PLEASE_TOKEN" ]; then
+            echo 'configured=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'configured=false' >> "$GITHUB_OUTPUT"
+            echo 'Release PR creation is not configured. Add RELEASE_PLEASE_TOKEN when enabling private releases; see [release setup](https://github.com/doruksahin/jira-to-packet/blob/main/docs/maintenance.md#private-releases). Existing release artifact retries remain available without this token.' >> "$GITHUB_STEP_SUMMARY"
+          fi
       - name: Open, update, or publish the release
         id: release
-        if: ${{ github.event_name != 'workflow_dispatch' || inputs.publish_tag == '' }}
+        if: ${{ steps.credentials.outputs.configured == 'true' && (github.event_name != 'workflow_dispatch' || inputs.publish_tag == '') }}
         uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7 # v5.0.0
         with:
           token: ${{ secrets.RELEASE_PLEASE_TOKEN }}
