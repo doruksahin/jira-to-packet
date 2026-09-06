@@ -98,8 +98,9 @@ contract. Pass a successfully saved packet to the
 The [manual producer workflow](../.github/workflows/jira-to-packet.yml) accepts one ticket.
 Set repository variable `PACKET_STORE_CONFIG` to the store JSON, and configure Jira credentials
 as repository secrets. For Drive, also configure the store's supported credential secret named
-in the workflow. The job writes configuration and temporary work under the runner's temporary
-directory, saves through the configured store, and attaches diagnostic receipts.
+in the workflow. The job validates configuration before export, installs rclone only for Drive,
+writes temporary work under the runner's temporary directory, saves through the configured store,
+and attaches diagnostic receipts.
 
 A local filesystem selected in a disposable runner lasts only as long as that runner. Choose a
 persistent mounted filesystem or Drive when a later independent job needs to fetch the packet.

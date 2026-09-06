@@ -22,18 +22,30 @@ jobs:
           node-version: 24
       - run: corepack enable
       - run: pnpm install --frozen-lockfile
+      - name: Validate storage configuration
+        id: store
+        env:
+          PACKET_STORE_CONFIG: ${{ vars.PACKET_STORE_CONFIG }}
+        run: |
+          node --input-type=module <<'JS'
+          import fs from 'node:fs';
+          import { readStoreConfig } from '@doruksahin/task-packet-store';
+          const file = `${process.env.RUNNER_TEMP}/store.json`;
+          fs.writeFileSync(file, process.env.PACKET_STORE_CONFIG ?? '', { flag: 'wx', mode: 0o600 });
+          const config = readStoreConfig(file);
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, `driver=${config.driver}\n`);
+          JS
       - name: Install pinned rclone
+        if: steps.store.outputs.driver == 'gdrive'
         uses: ./.github/actions/install-rclone
       - name: Export Jira and verify the saved packet
         env:
           TICKET: ${{ inputs.ticket }}
-          PACKET_STORE_CONFIG: ${{ vars.PACKET_STORE_CONFIG }}
           JIRA_HOST: ${{ secrets.JIRA_HOST }}
           JIRA_EMAIL: ${{ secrets.JIRA_EMAIL }}
           JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
           PACKET_STORE_DRIVE_SERVICE_ACCOUNT_CREDENTIALS: ${{ secrets.PACKET_STORE_DRIVE_SERVICE_ACCOUNT }}
         run: |
-          node --input-type=module -e 'import fs from "node:fs"; fs.writeFileSync(`${process.env.RUNNER_TEMP}/store.json`, process.env.PACKET_STORE_CONFIG, {mode: 0o600})'
           node bin/jira-to-packet.mjs --store "$RUNNER_TEMP/store.json" --ticket "$TICKET" --workspace "$RUNNER_TEMP/jira-packet-work"
           cat "$RUNNER_TEMP/jira-packet-work/summary.md" >> "$GITHUB_STEP_SUMMARY"
       - name: Upload producer diagnostics
