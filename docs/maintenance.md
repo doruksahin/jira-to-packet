@@ -22,9 +22,15 @@ The [CI workflow](../.github/workflows/ci.yml) runs the release gate on Node 20 
 [Architecture CI](../.github/workflows/architecture.yml) checks the shared contract and local
 Markdown file targets and heading anchors with pinned Lychee. Install
 [Lychee](https://github.com/lycheeverse/lychee#installation) 0.24.2 or newer for local checks.
-When changing cross-repository links, run the same input selection with authenticated access
-using the [owner's network check procedure](https://github.com/doruksahin/plugin-architecture/blob/main/docs/maintenance.md#check-links).
-Offline CI does not verify private network URLs.
+When changing cross-repository links, follow the
+[owner's network check procedure](https://github.com/doruksahin/plugin-architecture/blob/main/docs/maintenance.md#check-links)
+with the same input selection. Its
+[exact GitHub target checker](https://github.com/doruksahin/plugin-architecture/blob/main/tools/check-github-links.py)
+verifies each blob/tree path at its stated revision and checks Markdown or source-line fragments.
+Use it alongside Lychee: Lychee 0.24.2's authenticated private-repository fallback can report a
+missing file as valid when the repository itself is accessible. A successful Lychee summary alone
+does not prove private file or anchor validity. Offline CI only checks local files and anchors;
+links to changes awaiting merge remain unverified until their exact remote targets pass.
 
 ## Packet compatibility baseline
 

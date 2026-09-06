@@ -1,5 +1,5 @@
 # Agent entrypoints and architecture documentation: files and heading fragments.
-# CI passes --offline; authenticated maintainers check cross-repository links online.
+# CI passes --offline. Private GitHub paths also require the central Contents API check.
 no_progress = true
 format = "detailed"
 include_fragments = "anchor-only"
