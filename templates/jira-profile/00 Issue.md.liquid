@@ -1,0 +1,28 @@
+---
+type: jira-generated-issue
+jira_key: {{ issue.key | yaml }}
+jira_url: {{ issue.url | yaml }}
+jira_title: {{ issue.summary | yaml }}
+jira_updated: {{ issue.updated | yaml }}
+generated_by: jira-markdown-exporter
+---
+
+# {{ issue.key }} · {{ issue.summary }}
+
+> [!warning] Generated from Jira
+> Do not edit files in this folder; the next export replaces generated changes.
+
+{% if issue.description != blank %}{{ issue.description }}{% else %}_No description._{% endif %}
+
+## Details
+
+| Field | Value |
+| --- | --- |
+{% for field in issue.metadata %}| {{ field.name }} | {{ field.value | tableCell }} |
+{% endfor %}
+## Linked work items
+
+{% if linkedIssues.size > 0 %}| Relationship | Issue | Summary | Status | Type | Assignee |
+| --- | --- | --- | --- | --- | --- |
+{% for link in linkedIssues %}| {{ link.relationship | tableCell }} | [{{ link.key }}](<{{ link.url }}>) | {{ link.summary | tableCell }} | {{ link.status | tableCell }} | {{ link.issueType | tableCell }} | {{ link.assignee | tableCell }} |
+{% endfor %}{% else %}_No linked work items._{% endif %}

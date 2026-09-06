@@ -1,0 +1,38 @@
+{
+  "key": "PROJ-123",
+  "url": "https://example.atlassian.net/browse/PROJ-123",
+  "summary": "Preserve Jira acceptance context",
+  "description": "## Acceptance Criteria\n\n1. The exported packet contains the original acceptance criterion.\n2. The packet keeps Jira comments separate from approved criteria.\n\n## Design\n\nSee the attached fixture.",
+  "status": "Ready",
+  "issueType": "Task",
+  "priority": "Medium",
+  "assignee": "Developer",
+  "reporter": "Product owner",
+  "created": "2026-09-01T08:00:00.000Z",
+  "updated": "2026-09-02T09:30:00.000Z",
+  "labels": ["walkthrough"],
+  "parentKey": "",
+  "linkedIssues": [],
+  "comments": [
+    {
+      "id": "10001",
+      "author": "Product owner",
+      "created": "2026-09-02T10:00:00.000Z",
+      "updated": "2026-09-02T10:00:00.000Z",
+      "body": "Context only: wording is still under review. This comment is not approval."
+    }
+  ],
+  "attachments": [
+    {
+      "id": "20001",
+      "filename": "design.txt",
+      "mimeType": "text/plain",
+      "size": 15,
+      "author": "Designer",
+      "created": "2026-09-02T09:00:00.000Z",
+      "contentUrl": "https://example.atlassian.net/attachment/content/20001",
+      "isImage": false,
+      "inlineInDescription": false
+    }
+  ]
+}

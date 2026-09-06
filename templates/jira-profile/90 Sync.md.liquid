@@ -1,0 +1,19 @@
+---
+type: jira-generated-sync
+jira_key: {{ issue.key | yaml }}
+jira_updated: {{ issue.updated | yaml }}
+generated_by: jira-markdown-exporter
+---
+
+# {{ issue.key }} · Export metadata
+
+- Jira updated: {{ issue.updated | default: '—' }}
+- Comments: {{ comments.size }}
+- Attachments: {{ sync.attachmentCount }}
+- Downloaded attachments: {{ sync.downloadedAttachments }}
+
+## Warnings
+
+{% if sync.warnings.size > 0 %}{% for warning in sync.warnings %}- {{ warning }}
+{% endfor %}{% else %}- None.
+{% endif %}

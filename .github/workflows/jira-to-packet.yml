@@ -1,0 +1,45 @@
+name: Jira to stored packet
+on:
+  workflow_dispatch:
+    inputs:
+      ticket:
+        description: Jira ticket, for example PROJ-123
+        required: true
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: jira-to-packet-${{ inputs.ticket }}
+  cancel-in-progress: false
+jobs:
+  create-packet:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 24
+      - run: corepack enable
+      - run: pnpm install --frozen-lockfile
+      - name: Install pinned rclone
+        uses: ./.github/actions/install-rclone
+      - name: Export Jira and verify the saved packet
+        env:
+          TICKET: ${{ inputs.ticket }}
+          PACKET_STORE_CONFIG: ${{ vars.PACKET_STORE_CONFIG }}
+          JIRA_HOST: ${{ secrets.JIRA_HOST }}
+          JIRA_EMAIL: ${{ secrets.JIRA_EMAIL }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+          PACKET_STORE_DRIVE_SERVICE_ACCOUNT_CREDENTIALS: ${{ secrets.PACKET_STORE_DRIVE_SERVICE_ACCOUNT }}
+        run: |
+          node --input-type=module -e 'import fs from "node:fs"; fs.writeFileSync(`${process.env.RUNNER_TEMP}/store.json`, process.env.PACKET_STORE_CONFIG, {mode: 0o600})'
+          node bin/jira-to-packet.mjs --store "$RUNNER_TEMP/store.json" --ticket "$TICKET" --workspace "$RUNNER_TEMP/jira-packet-work"
+          cat "$RUNNER_TEMP/jira-packet-work/summary.md" >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload producer diagnostics
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: jira-to-packet-${{ inputs.ticket }}
+          if-no-files-found: warn
+          path: ${{ runner.temp }}/jira-packet-work/*.json

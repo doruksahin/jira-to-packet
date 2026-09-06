@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "jira-to-packet",
+  "kind": "package",
+  "repository": "https://github.com/doruksahin/jira-to-packet",
+  "owner": "doruksahin",
+  "document": "docs/architecture/README.md",
+  "sourcePaths": ["package.json", "bin/jira-to-packet.mjs", "src/jira-to-packet.mjs", "src/prepare-task-packet.mjs", "src/packet-identity.mjs", "src/process.mjs", "src/workspace.mjs", "templates/jira-profile/profile.json"],
+  "dependencyChecks": [{"manifest": "package.json", "allowedInternalPackages": ["@doruksahin/jira-markdown-exporter", "@doruksahin/task-packet-store"]}],
+  "boundaryChecks": [{"paths": ["bin/jira-to-packet.mjs", "src/jira-to-packet.mjs", "src/prepare-task-packet.mjs", "src/packet-identity.mjs", "src/process.mjs", "src/workspace.mjs"], "forbidden": ["AC-visual-walkthrough", "ac-walkthrough-plugin", "run-walkthrough"]}]
+}

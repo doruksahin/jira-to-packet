@@ -1,0 +1,28 @@
+{
+  "name": "@doruksahin/jira-to-packet",
+  "version": "0.1.0",
+  "description": "Export one Jira issue into a verified task packet in configured local or Google Drive storage.",
+  "type": "module",
+  "private": true,
+  "license": "UNLICENSED",
+  "repository": { "type": "git", "url": "git+https://github.com/doruksahin/jira-to-packet.git" },
+  "homepage": "https://github.com/doruksahin/jira-to-packet#readme",
+  "bugs": { "url": "https://github.com/doruksahin/jira-to-packet/issues" },
+  "engines": { "node": ">=20.6" },
+  "packageManager": "pnpm@10.33.0",
+  "bin": { "jira-to-packet": "bin/jira-to-packet.mjs" },
+  "exports": { ".": "./src/jira-to-packet.mjs" },
+  "files": ["bin", "src", "templates", "README.md", "docs/cli.md"],
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "check": "pnpm test",
+    "release:check": "pnpm check && npm pack --dry-run --ignore-scripts",
+    "release:artifact": "node scripts/build-release-artifact.mjs",
+    "release:smoke-install": "node scripts/smoke-installed-artifact.mjs"
+  },
+  "dependencies": {
+    "@doruksahin/jira-markdown-exporter": "0.5.0",
+    "@doruksahin/task-packet-store": "0.1.1",
+    "yaml": "2.8.1"
+  }
+}

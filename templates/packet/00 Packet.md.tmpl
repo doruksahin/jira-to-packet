@@ -1,0 +1,22 @@
+---
+type: jira-task-record
+schema_version: 1
+jira_key: {{jira_key}}
+jira_url: {{jira_url}}
+jira_title: {{jira_title}}
+jira_updated: {{jira_updated}}
+generated_by: {{generated_by}}
+export_profile: {{profile_id}}
+export_profile_sha256: {{profile_digest}}
+---
+
+# {{jira_key}} · {{jira_title_text}}
+
+- [Task note](task.md)
+- [Jira issue snapshot](jira/00%20Issue.md)
+- [Jira comments](jira/10%20Comments.md)
+- [Jira attachments](jira/20%20Attachments.md)
+- [Jira export metadata](jira/90%20Sync.md)
+
+This packet preserves the exported Jira description, comments, and attachments. A Jira comment is
+context, not an acceptance-criteria approval unless it says so explicitly.

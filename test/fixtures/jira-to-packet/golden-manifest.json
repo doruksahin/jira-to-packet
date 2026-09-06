@@ -1,0 +1,47 @@
+{
+  "sourceCommit": "ee07828af532f2556775300ac3196f412f64febb",
+  "profileDigest": "sha256:b0478dff2dce263fd405979b809c17f3e64dde764b10b44340169483c0c0b781",
+  "packetSha256": "8698a603a3a2f9f5d7288105265d3664eae736d1e41d94117584152e802f8655",
+  "files": [
+    {
+      "path": "00 Packet.md",
+      "size": 825,
+      "sha256": "2df0ff24d6e44b5e095a6923909822c92ea42c9b05a3b452d29093018309f883"
+    },
+    {
+      "path": "jira/00 Issue.md",
+      "size": 994,
+      "sha256": "42dc5cd674f1617073fdae0215099f537ad2cb104b36952ed4596e2bcb854b55"
+    },
+    {
+      "path": "jira/10 Comments.md",
+      "size": 482,
+      "sha256": "97b3f8481e68d1e3294477e683f89d173c2e16152a57f0017553d42e1dd92a4a"
+    },
+    {
+      "path": "jira/20 Attachments.md",
+      "size": 510,
+      "sha256": "eaec46918e61dfcbcba2e0d46a386cf34d3fcd5cbec4ad96246fd21dd22df232"
+    },
+    {
+      "path": "jira/90 Sync.md",
+      "size": 287,
+      "sha256": "937c7368584832d4c4562cd56c67e99238bfab7a4ad1841e72a2c0371335deeb"
+    },
+    {
+      "path": "jira/attachments/20001-design.txt",
+      "size": 15,
+      "sha256": "3be6776a4acf9827f957637a57abbe51a6252c7860940407054045fbc54d4908"
+    },
+    {
+      "path": "stages/20-ac-walkthrough/README.md",
+      "size": 183,
+      "sha256": "046811bc5a6a5906350b82d75e095352616fd25a51ed810f045ef5a9bb369acb"
+    },
+    {
+      "path": "task.md",
+      "size": 299,
+      "sha256": "403627867e72ec7e2300d2ac81273a7c5c9977854bf79902e1fa1d462d61002d"
+    }
+  ]
+}

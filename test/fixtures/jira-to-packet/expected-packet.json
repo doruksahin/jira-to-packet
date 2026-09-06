@@ -1,0 +1,17 @@
+{
+  "requiredFiles": [
+    "00 Packet.md",
+    "task.md",
+    "jira/00 Issue.md",
+    "jira/10 Comments.md",
+    "jira/20 Attachments.md",
+    "jira/90 Sync.md",
+    "jira/attachments/20001-design.txt",
+    "stages/20-ac-walkthrough/README.md"
+  ],
+  "identityFiles": ["00 Packet.md", "task.md", "jira/**"],
+  "consumer": {
+    "jiraKey": "PROJ-123",
+    "acceptanceCriteriaState": "present"
+  }
+}

@@ -1,0 +1,33 @@
+name: Install rclone
+description: Download the packet store's pinned rclone release, verify it, and add it to PATH.
+
+inputs:
+  version:
+    description: rclone release tag to install
+    required: false
+    default: v1.75.0
+
+runs:
+  using: composite
+  steps:
+    - name: Download, verify, and install rclone
+      shell: bash
+      env:
+        PACKET_STORE_RCLONE_RELEASE: ${{ inputs.version }}
+      run: |
+        set -euo pipefail
+        version="$PACKET_STORE_RCLONE_RELEASE"
+        archive="rclone-$version-linux-amd64.zip"
+        install_root="$RUNNER_TEMP/rclone-$version"
+
+        mkdir -p "$install_root" "$RUNNER_TEMP/bin"
+        cd "$install_root"
+        curl --fail --silent --show-error --location --remote-name \
+          "https://downloads.rclone.org/$version/$archive"
+        curl --fail --silent --show-error --location --remote-name \
+          "https://downloads.rclone.org/$version/SHA256SUMS"
+        grep " $archive$" SHA256SUMS | sha256sum --check
+        unzip -q "$archive"
+        install -m 0755 "rclone-$version-linux-amd64/rclone" "$RUNNER_TEMP/bin/rclone"
+        echo "$RUNNER_TEMP/bin" >> "$GITHUB_PATH"
+        "$RUNNER_TEMP/bin/rclone" version
