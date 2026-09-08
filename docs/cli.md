@@ -91,7 +91,7 @@ The identity comparison alone is not completion: file verification and location 
 Use a fresh workspace for a retry. An error after push may leave a stored packet but never claims
 it is ready. Refreshing the ticket preserves existing stage runs according to the store's push
 contract. Pass a successfully saved packet to the
-[AC consumer flow](https://github.com/doruksahin/AC-visual-walkthrough/blob/main/docs/portable-workflows.md).
+[AC consumer flow](https://github.com/AdCreative-ai/AC-visual-walkthrough/blob/main/docs/portable-workflows.md).
 
 ## Run in GitHub Actions
 
