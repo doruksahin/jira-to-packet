@@ -1,7 +1,7 @@
 # Jira to packet
 
-Create a task packet from one Jira issue and save it through your selected local or Google Drive
-store. The runner can be your computer or CI; the command and result stay the same.
+Create a task packet from one Jira issue and save it through your selected local, Google Drive, or
+git store. The runner can be your computer or CI; the command and result stay the same.
 
 ```sh
 jira-to-packet --store /inputs/store.json --ticket PROJ-123 --workspace /tmp/PROJ-123-producer

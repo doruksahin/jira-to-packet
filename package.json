@@ -1,7 +1,7 @@
 {
   "name": "@doruksahin/jira-to-packet",
   "version": "0.1.0",
-  "description": "Export one Jira issue into a verified task packet in configured local or Google Drive storage.",
+  "description": "Export one Jira issue into a verified task packet in configured local, Google Drive, or git storage.",
   "type": "module",
   "private": true,
   "license": "UNLICENSED",
@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@doruksahin/jira-markdown-exporter": "0.5.0",
-    "@doruksahin/task-packet-store": "0.1.1",
+    "@doruksahin/task-packet-store": "0.2.0",
     "yaml": "2.8.1"
   }
 }
