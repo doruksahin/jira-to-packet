@@ -38,6 +38,15 @@ For Google Drive:
 {"driver":"gdrive","sharedDriveId":"YOUR_SHARED_DRIVE_ID","prefix":"packets"}
 ```
 
+For a git repository:
+
+```json
+{"driver":"git","remote":"https://github.com/team/task-packets.git","branch":"main","prefix":"packets"}
+```
+
+The host pushes with its own git credentials and needs `git` 2.28 or newer on `PATH`; never put a
+token in the URL.
+
 For Drive, install rclone and supply credentials using the
 [store server setup](https://github.com/doruksahin/task-packet-store/blob/main/docs/design/04-server-operation.md).
 The same configuration file can be passed to later workflows. Local storage needs no rclone or
@@ -65,8 +74,9 @@ Successful stdout contains exactly one JSON object:
 {"ticket":"PROJ-123","status":"packet-ready","packetSha256":"<64 hex characters>","packet":{"ticket":"PROJ-123","driver":"fs","relativePath":"","kind":"directory","location":"/data/task-packets/PROJ-123"}}
 ```
 
-With the Drive configuration, `packet.location` is the Drive folder URL. Storage is selected by
-the configuration; there is no second producer command. The persistent folder contains Jira
+With the Drive configuration, `packet.location` is the Drive folder URL; with the git
+configuration it is `<remote>#<commit>:<path>`, the commit that holds the packet. Storage is
+selected by the configuration; there is no second producer command. The persistent folder contains Jira
 Markdown and attachments plus the [packet scaffolding](../templates/packet/00%20Packet.md.tmpl).
 Jira comments remain context; production does not invent human acceptance approval.
 
@@ -98,9 +108,11 @@ contract. Pass a successfully saved packet to the
 The [manual producer workflow](../.github/workflows/jira-to-packet.yml) accepts one ticket.
 Set repository variable `PACKET_STORE_CONFIG` to the store JSON, and configure Jira credentials
 as repository secrets. For Drive, also configure the store's supported credential secret named
-in the workflow. The job validates configuration before export, installs rclone only for Drive,
+in the workflow. For a git store, the runner needs its own credential for that remote, such as a
+deploy key in its SSH agent; the checkout token does not cover other repositories. The job validates configuration before export, installs rclone only for Drive,
 writes temporary work under the runner's temporary directory, saves through the configured store,
 and attaches diagnostic receipts.
 
 A local filesystem selected in a disposable runner lasts only as long as that runner. Choose a
-persistent mounted filesystem or Drive when a later independent job needs to fetch the packet.
+persistent mounted filesystem, a git remote, or Drive when a later independent job needs to fetch
+the packet.
