@@ -21,7 +21,7 @@
     "release:smoke-install": "node scripts/smoke-installed-artifact.mjs"
   },
   "dependencies": {
-    "@doruksahin/jira-markdown-exporter": "0.5.0",
+    "@doruksahin/jira-markdown-exporter": "0.6.0",
     "@doruksahin/task-packet-store": "0.2.0",
     "yaml": "2.8.1"
   }
