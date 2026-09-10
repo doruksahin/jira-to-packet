@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@doruksahin/jira-markdown-exporter':
-        specifier: 0.5.0
-        version: 0.5.0
+        specifier: 0.6.0
+        version: 0.6.0
       '@doruksahin/task-packet-store':
         specifier: 0.2.0
         version: 0.2.0
@@ -20,8 +20,8 @@ importers:
 
 packages:
 
-  '@doruksahin/jira-markdown-exporter@0.5.0':
-    resolution: {integrity: sha512-w6CXYQi/kr38194/vGrK0QV+Xl1mukmm4nJBvCZyV5CrEtfHXuIokjo8pgAmmYMzQ2Uef7eZGgGEP2x19viFfg==}
+  '@doruksahin/jira-markdown-exporter@0.6.0':
+    resolution: {integrity: sha512-RYyeb5mHTY6zAZkqMx8ircaufSt5Kdt/yXgXQ7FnbZzSTwoOMDbA+NmCAZddJvG2956H22TjpGP8I3jqlPQafw==}
     engines: {node: '>=20'}
     hasBin: true
 
@@ -187,7 +187,7 @@ packages:
 
 snapshots:
 
-  '@doruksahin/jira-markdown-exporter@0.5.0':
+  '@doruksahin/jira-markdown-exporter@0.6.0':
     dependencies:
       ajv: 8.20.0
       axios: 1.20.0
