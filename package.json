@@ -9,7 +9,7 @@
   "homepage": "https://github.com/doruksahin/jira-to-packet#readme",
   "bugs": { "url": "https://github.com/doruksahin/jira-to-packet/issues" },
   "engines": { "node": ">=20.6" },
-  "packageManager": "pnpm@10.33.0",
+  "packageManager": "pnpm@10.34.5",
   "bin": { "jira-to-packet": "bin/jira-to-packet.mjs" },
   "exports": { ".": "./src/jira-to-packet.mjs" },
   "files": ["bin", "src", "templates", "README.md", "docs/cli.md"],
