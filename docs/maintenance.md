@@ -43,17 +43,16 @@ and [profile templates](https://github.com/doruksahin/AC-visual-walkthrough/tree
 remain immutable provenance. Golden data is reviewed compatibility evidence, not regenerated
 automatically when a test fails. The profile's existing ID remains stable through extraction.
 
-## Private releases
+## GitHub releases
 
-[Release Please](../.github/workflows/release-please.yml) owns versions, changelog, tags, and private
+[Release Please](../.github/workflows/release-please.yml) owns versions, changelog, tags, and
 GitHub releases through [its manifest](../.release-please-manifest.json) and
 [configuration](../release-please-config.json). Configure `RELEASE_PLEASE_TOKEN` with access to this
-private repository before enabling release creation. Until then, CI reports the missing setup in
+repository before enabling release creation. Until then, CI reports the missing setup in
 its job summary and skips release PR creation; ordinary checks still run. Retrying artifacts for
 an existing release uses the job's GitHub token and does not require the release-creation token.
-The initial implementation has no published
-release until its release PR is reviewed and merged. This package is private; no npm publication
-job is configured.
+A release is published after its release PR is reviewed and merged. The source repository is
+public, while the package remains `private: true`; no npm publication job is configured.
 
 Before accepting a release, run `pnpm release:check`. The release job checks the tag against the
 package version, builds a tarball and SHA-256 checksum, verifies the installed artifact, and

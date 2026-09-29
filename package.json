@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@doruksahin/jira-markdown-exporter": "0.6.0",
-    "@doruksahin/task-packet-store": "0.3.0",
+    "@doruksahin/task-packet-store": "0.4.0",
     "yaml": "2.9.1"
   }
 }

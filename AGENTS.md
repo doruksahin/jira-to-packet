@@ -11,4 +11,5 @@ Preserve the [frozen packet baseline](test/fixtures/jira-to-packet/golden-manife
 explicitly governed format change updates producer and consumer compatibility together.
 
 Use synthetic tickets in tests and examples; credentials remain in environment variables.
-This repository is private and has no public npm publishing rail. Run `pnpm check` after changes.
+The source repository is public; the package remains `private: true` with no npm publishing rail.
+Run `pnpm check` after changes.
