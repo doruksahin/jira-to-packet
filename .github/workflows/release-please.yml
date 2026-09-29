@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       publish_tag:
-        description: Existing vX.Y.Z tag to retry private GitHub artifact publication
+        description: Existing vX.Y.Z tag to retry GitHub artifact publication
         required: false
         type: string
 
@@ -37,7 +37,7 @@ jobs:
             echo 'configured=true' >> "$GITHUB_OUTPUT"
           else
             echo 'configured=false' >> "$GITHUB_OUTPUT"
-            echo 'Release PR creation is not configured. Add RELEASE_PLEASE_TOKEN when enabling private releases; see [release setup](https://github.com/doruksahin/jira-to-packet/blob/main/docs/maintenance.md#private-releases). Existing release artifact retries remain available without this token.' >> "$GITHUB_STEP_SUMMARY"
+            echo 'Release PR creation is not configured. Add RELEASE_PLEASE_TOKEN when enabling GitHub releases; see [release setup](https://github.com/doruksahin/jira-to-packet/blob/main/docs/maintenance.md#github-releases). Existing release artifact retries remain available without this token.' >> "$GITHUB_STEP_SUMMARY"
           fi
       - name: Open, update, or publish the release
         id: release

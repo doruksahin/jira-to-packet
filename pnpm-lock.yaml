@@ -12,8 +12,8 @@ importers:
         specifier: 0.6.0
         version: 0.6.0
       '@doruksahin/task-packet-store':
-        specifier: 0.3.0
-        version: 0.3.0
+        specifier: 0.4.0
+        version: 0.4.0
       yaml:
         specifier: 2.9.1
         version: 2.9.1
@@ -25,8 +25,8 @@ packages:
     engines: {node: '>=20'}
     hasBin: true
 
-  '@doruksahin/task-packet-store@0.3.0':
-    resolution: {integrity: sha512-nz/sm1Nk9sxmpV++Qdykt1H52z6TiBS3lgOOkLtSCf6aj9h0inEwI+T2eQvljcZznrZxKarxYlq2iv0BUJ2tyw==}
+  '@doruksahin/task-packet-store@0.4.0':
+    resolution: {integrity: sha512-hny7y8AckqOmrM7tq5Zkmga/516uBuGcOmmZudfV74j4qEIN+o2GsZZd6DrvCr9xRAndSs1pJrd63qyhkU2+yA==}
     engines: {node: '>=20'}
     hasBin: true
 
@@ -198,7 +198,7 @@ snapshots:
       - debug
       - supports-color
 
-  '@doruksahin/task-packet-store@0.3.0':
+  '@doruksahin/task-packet-store@0.4.0':
     dependencies:
       commander: 14.0.3
       yaml: 2.9.1

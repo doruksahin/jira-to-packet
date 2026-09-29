@@ -2,8 +2,8 @@
 
 ## Install
 
-This is a private repository. Use an authenticated checkout or a tarball downloaded from a
-[private GitHub release](https://github.com/doruksahin/jira-to-packet/releases).
+Use a checkout of the public repository or a tarball downloaded from a
+[GitHub release](https://github.com/doruksahin/jira-to-packet/releases).
 An initial checkout can build the same artifact without waiting for a release:
 
 ```sh
@@ -16,10 +16,10 @@ npm install --global /tmp/jira-producer-package/*.tgz --@doruksahin:registry=htt
 jira-to-packet --version
 ```
 
-Input: repository access and Node.js 20.6 or newer. Use a fresh artifact output directory.
+Input: Node.js 20.6 or newer. Use a fresh artifact output directory.
 Output: an installed `jira-to-packet` command that can run from any working directory.
 The registry option selects the public registry for the producer's existing exporter/store
-dependencies; the producer itself is installed from the private tarball.
+dependencies; the producer itself is installed from the tarball and is not published to npm.
 
 ## Choose storage once
 
